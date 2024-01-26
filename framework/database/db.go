@@ -19,7 +19,7 @@ func NewDbTest() *sql.DB {
 	dbInstace := NewDb()
 	dbInstace.Env = "Test"
 	dbInstace.DbTypeTest = "sqlite3"
-	dbInstace.DsnTest = ":memory"
+	dbInstace.DsnTest = ":memory:"
 
 	conn, err := dbInstace.Connect()
 
