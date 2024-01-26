@@ -5,6 +5,7 @@ import (
 	"fmt"
 
 	"github.com/google/uuid"
+
 	"github.com/pedrohenmonteiro/go-encoder-video/domain"
 )
 
@@ -28,7 +29,7 @@ func (r VideoRepositoryDB) Insert(video *domain.Video) (*domain.Video, error) {
 		video.ID = uuid.New().String()
 	}
 
-	stmt, err := r.Db.Prepare("INSERT INTO videos (encoded_video_folder, resource_id, file_path, created_at) VALUES (?, ?, ?, ?)")
+	stmt, err := r.Db.Prepare("INSERT INTO videos (id, resource_id, file_path, created_at) VALUES (?, ?, ?, ?)")
 	if err != nil {
 		return nil, err
 	}
@@ -60,9 +61,3 @@ func (r VideoRepositoryDB) Find(id string) (*domain.Video, error) {
 
 	return &video, nil
 }
-
-// ID         string    `json:"encoded_video_folder" valid:"uuid"`
-// ResourceID string    `json:"resource_id" :"notnull"`
-// FilePath   string    `json:"file_path" valid:"notnull"`
-// CreatedAt  time.Time `json:"-" valid:"-"`
-// Jobs       []*Job    `json:"-" valid:"-"`

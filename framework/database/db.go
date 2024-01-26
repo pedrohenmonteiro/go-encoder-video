@@ -1,6 +1,10 @@
 package database
 
-import "database/sql"
+import (
+	"database/sql"
+
+	_ "github.com/mattn/go-sqlite3"
+)
 
 type Database struct {
 	Db         *sql.DB
@@ -17,9 +21,9 @@ func NewDb() *Database {
 
 func NewDbTest() *sql.DB {
 	dbInstace := NewDb()
-	dbInstace.Env = "Test"
+	dbInstace.Env = "test"
 	dbInstace.DbTypeTest = "sqlite3"
-	dbInstace.DsnTest = ":memory:"
+	dbInstace.DsnTest = "./test.db"
 
 	conn, err := dbInstace.Connect()
 
