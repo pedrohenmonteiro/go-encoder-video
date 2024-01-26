@@ -15,6 +15,7 @@ type Job struct {
 	ID               string    `json:"job_id" valid:"uuid"`
 	OutputBucketPath string    `json:"output_bucket_path" valid:"notnull"`
 	Status           string    `json:"status" valid:"notnull"`
+	VideoID          string    `json:"video_id" valid:"-"`
 	Video            *Video    `json:"video" valid:"-"`
 	Error            string    `valid:"-"`
 	CreatedAt        time.Time `json:"created_at" valid:"-"`
