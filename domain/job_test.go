@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/pedrohenmonteiro/go-encoder-video/encoder/domain"
+	"github.com/pedrohenmonteiro/go-encoder-video/domain"
 	"github.com/stretchr/testify/assert"
 )
 
