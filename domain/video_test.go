@@ -28,7 +28,7 @@ func TestVideoIdIsNotAUuid(t *testing.T) {
 	assert.Error(t, err)
 }
 
-func TestVideoValidaiton(t *testing.T) {
+func TestVideoValidation(t *testing.T) {
 	video := domain.NewVideo()
 
 	video.ID = uuid.New().String()
