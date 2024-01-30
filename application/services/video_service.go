@@ -99,6 +99,31 @@ func (v *VideoService) Encode() error {
 	return nil
 }
 
+func (v *VideoService) Finish() error {
+
+	err := os.Remove(os.Getenv("localStoragePath") + "/" + v.Video.ID + ".mp4")
+	if err != nil {
+		log.Println("error removing mp4 ", v.Video.ID, ".mp4")
+		return err
+	}
+
+	err = os.Remove(os.Getenv("localStoragePath") + "/" + v.Video.ID + ".frag")
+	if err != nil {
+		log.Println("error removing mp4 ", v.Video.ID, ".frag")
+		return err
+	}
+
+	err = os.RemoveAll(os.Getenv("localStoragePath") + "/" + v.Video.ID)
+	if err != nil {
+		log.Println("error removing mp4 ", v.Video.ID)
+		return err
+	}
+
+	log.Println("files have been removed")
+
+	return nil
+}
+
 func printOutput(out []byte) {
 	if len(out) > 0 {
 		log.Printf("=====> Output: %s\n", string(out))
